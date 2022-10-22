@@ -1,11 +1,12 @@
 from aiogram import types, Dispatcher
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import bot, dp
+from database.bot_db import sql_command_random
 
 async def pin(message: types.Message):
     if message.reply_to_message:
         await bot.pin_chat_message(message.chat.id, message.message_id)
-    else: message.answer('сообщение должно быть ответомэ')
+    else: message.answer('сообщение должно быть ответом')
 
 # @dp.message_handler(commands=['mem'])
 async def mem_handler(message: types.Message):
@@ -41,7 +42,11 @@ async def quiz_1(message: types.Message):
     )
 
 
+async def get_random_user(message:types.Message):
+    await sql_command_random(message)
+
 def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(pin, commands=['pin'], commands_prefix='!')
     dp.register_message_handler(mem_handler, commands=['mem'])
     dp.register_message_handler(quiz_1, commands=['quiz'])
+    dp.register_message_handler(get_random_user, commands=['get'])

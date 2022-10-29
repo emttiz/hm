@@ -12,9 +12,9 @@ def sql_create():
         print('База данных подключено!')
 
     db.execute("CREATE TABLE IF NOT EXISTS mentors "
-               "(id INTEGER PRIMARY KEY, name TEXT,"
+               "(id INTEGER PRIMARY KEY, namee TEXT,"
                "direction TEXT, age INTEGER, "
-               "group TEXT)")
+               "groupe TEXT)")
     db.commit()
 
 async def sql_command_insert(state):

@@ -12,7 +12,7 @@ async def do_homework():
     await bot.send_message(chat_id=chat_id, text="Делай уроки!!!")
 
 async def schedule():
-    aioschedule.every().wednesday.at('16:59').do(do_homework)
+    aioschedule.every().saturday.at('15:36').do(do_homework)
     while True:
         await aioschedule.run_pending()
         await asyncio.sleep(2)
